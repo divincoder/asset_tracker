@@ -1,14 +1,16 @@
 
 ## AssetTracker
 
+This App enables you view your investments and liquidations over time graphically. It is a mock display App, not functional.
+
 <br/>
 This project demonstrates it is possible to create beautiful charting system in flutter for Investments, Assets management etc.
 
 Zoom and scroll through the different graphs to explore how your assets are faring.
 
-The charts and graphs were implemented using the Canvas API.
-
 The Graphs were taken and modified from the #BudgetTracker vignette in the Flutter Vignettes. More Information below
+
+The charts and graphs on the Dashboard were implemented using the Canvas API.
 
 <br />
 
