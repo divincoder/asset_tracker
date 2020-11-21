@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:spending_tracker/auth/login_screen.dart';
 import 'package:spending_tracker/spending_income_expenses_header.dart';
 
 import 'app_colors.dart';
 import 'chart/chart.dart';
+import 'components/profile_icon.dart';
 import 'components/scaling_info.dart';
 import 'demo_data.dart';
 import 'interact_notification.dart';
@@ -16,9 +18,11 @@ class SpendingTrackerDemo extends StatefulWidget {
   _SpendingTrackerDemoState createState() => _SpendingTrackerDemoState();
 }
 
-class _SpendingTrackerDemoState extends State<SpendingTrackerDemo> with SingleTickerProviderStateMixin {
+class _SpendingTrackerDemoState extends State<SpendingTrackerDemo>
+    with SingleTickerProviderStateMixin {
   AnimationController _controller;
   Chart _chart;
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -30,7 +34,10 @@ class _SpendingTrackerDemoState extends State<SpendingTrackerDemo> with SingleTi
     _chart.rangeEnd = 8;
     _chart.selectedDataPoint = 4;
     _chart.addListener(() => setState(() {}));
-    _controller = AnimationController(vsync: this, duration: Duration(milliseconds: 12000), upperBound: _chart.maxDomain);
+    _controller = AnimationController(
+        vsync: this,
+        duration: Duration(milliseconds: 12000),
+        upperBound: _chart.maxDomain);
 
     _controller.addListener(() {
       final d = _controller.value - _chart.domainStart;
@@ -53,7 +60,71 @@ class _SpendingTrackerDemoState extends State<SpendingTrackerDemo> with SingleTi
     }
 
     return Scaffold(
-        appBar: SpendingAppBar(),
+        key: scaffoldKey,
+        appBar: SpendingAppBar(scaffoldKey: scaffoldKey),
+        drawer: Drawer(
+            child: Container(
+          color: AppColors.colorBg0,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              SizedBox(height: 100),
+              Container(height: 150, child: ProfileIcon()),
+              Text('Ofoegbu Valentine',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: AppColors.colorText2,
+                    fontFamily: 'Lato',
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                  )),
+              SizedBox(height: 40),
+              ListTile(
+                leading: Icon(Icons.insert_chart, color: AppColors.colorText1),
+                title: Text('My Portfolio',
+                    style: TextStyle(
+                      color: AppColors.colorText1,
+                      fontFamily: 'Lato',
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18,
+                    )),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.settings, color: AppColors.colorText1),
+                title: Text('Settings',
+                    style: TextStyle(
+                      color: AppColors.colorText1,
+                      fontFamily: 'Lato',
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18,
+                    )),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading:
+                    Icon(Icons.power_settings_new, color: AppColors.colorText1),
+                title: Text('Log Out',
+                    style: TextStyle(
+                      color: AppColors.colorText1,
+                      fontFamily: 'Lato',
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18,
+                    )),
+                onTap: () {
+                  Navigator.pop(context);
+
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()));
+                },
+              ),
+            ],
+          ),
+        )),
         body: Container(
           color: AppColors.colorBg0,
           child: Column(

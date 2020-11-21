@@ -4,6 +4,7 @@ import 'package:helper_widgets/empty_space.dart';
 import 'package:helper_widgets/responsive/responsive_builder.dart';
 import 'package:helper_widgets/validators.dart';
 import 'package:spending_tracker/app_colors.dart';
+import 'package:spending_tracker/demo.dart';
 import 'package:spending_tracker/widgets/c_button.dart';
 import 'package:spending_tracker/widgets/c_textform_field.dart';
 
@@ -35,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         key: scaffoldKey,
-        backgroundColor:  Colors.white70,
+        backgroundColor: Colors.white70,
         body: AnnotatedRegion<SystemUiOverlayStyle>(
           value: SystemUiOverlayStyle.light,
           child: Column(
@@ -114,20 +115,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                       showProgress: _loading,
                                       title: "Continue",
                                       onPressed: () {
-                                        setState(() {
-                                          _loading = true;
-                                        });
-                                        Future.delayed(
-                                            Duration(seconds: 3), () {
-
-                                        });
+                                       login();
                                       }),
                                   FlatButton(
                                       onPressed: () {
-                                        scaffoldKey.currentState.showSnackBar(
-                                            SnackBar(
-                                                content:
-                                                    Text("Not available"), backgroundColor: AppColors.colorAccent0,));
+                                        scaffoldKey.currentState
+                                            .showSnackBar(SnackBar(
+                                          content: Text("Not available"),
+                                          backgroundColor:
+                                              AppColors.colorAccent0,
+                                        ));
                                       },
                                       child: Text("Forgot Password?"))
                                 ],
@@ -140,4 +137,21 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ));
   }
+
+  login() {
+    if(formKey.currentState.validate()) {
+      setState(() {
+        _loading = true;
+      });
+      Future.delayed(Duration(seconds: 3),
+              () {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        SpendingTrackerDemo()));
+          });
+    }
+  }
+
 }

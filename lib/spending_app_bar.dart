@@ -5,7 +5,9 @@ import 'components/header_row.dart';
 import 'components/profile_icon.dart';
 
 class SpendingAppBar extends StatelessWidget with PreferredSizeWidget {
-  SpendingAppBar({Key key}) : super(key: key);
+  final GlobalKey<ScaffoldState> scaffoldKey;
+
+  SpendingAppBar({this.scaffoldKey, Key key}) : super(key: key);
 
   @override
   Widget build(context) {
@@ -18,10 +20,15 @@ class SpendingAppBar extends StatelessWidget with PreferredSizeWidget {
           children: [
             Padding(
               padding: EdgeInsets.symmetric(vertical: 8, horizontal: 18),
-              child: Icon(
-                Icons.menu,
-                color: Colors.white,
-                size: 28,
+              child: InkWell(
+                onTap: () {
+                  scaffoldKey.currentState.openDrawer();
+                },
+                child: Icon(
+                  Icons.menu,
+                  color: Colors.white,
+                  size: 28,
+                ),
               ),
             ),
             HeaderRow(),
