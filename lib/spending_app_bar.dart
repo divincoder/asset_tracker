@@ -32,7 +32,7 @@ class SpendingAppBar extends StatelessWidget with PreferredSizeWidget {
               ),
             ),
             HeaderRow(),
-            ProfileIcon(),
+            Container(height: 70, child: ProfileIcon()),
           ],
         ),
       ),

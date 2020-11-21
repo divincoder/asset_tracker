@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spending_tracker/auth/login_screen.dart';
+import 'package:spending_tracker/portfolio_screen.dart';
 import 'package:spending_tracker/spending_income_expenses_header.dart';
 
 import 'app_colors.dart';
@@ -90,6 +91,10 @@ class _SpendingTrackerDemoState extends State<SpendingTrackerDemo>
                     )),
                 onTap: () {
                   Navigator.pop(context);
+
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => PortfolioScreen()));
+
                 },
               ),
               ListTile(

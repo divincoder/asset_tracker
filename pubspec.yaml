@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.2
+  charts_flutter: ^0.9.0
 
   helper_widgets:
     git:
@@ -23,7 +24,10 @@ flutter:
   uses-material-design: true
 
   assets:
-    - images/
+    - images/arla.png
+    - images/profile.png
+    - images/9mobile.png
+    - images/airtel.png
 
   fonts:
     - family: Lato

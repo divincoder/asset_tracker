@@ -75,7 +75,7 @@ class _SpendingCategoryListState extends State<SpendingCategoryList> {
                 color1: Color(0xFF509983),
               ),
               CirclePercentageWidget(
-                title: 'Housing',
+                title: 'Equity',
                 percent: percent2,
                 color0: Color(0xFFE38C8C),
                 color1: Color(0xFF995E5E),
