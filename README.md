@@ -3,6 +3,8 @@
 
 This App enables you view your investments and liquidations over time graphically. It is a mock display App, not functional.
 
+Login: any email and password above 4 characters
+
 <br/>
 This project demonstrates it is possible to create beautiful charting system in flutter for Investments, Assets management etc.
 
